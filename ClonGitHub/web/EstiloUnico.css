@@ -1,0 +1,344 @@
+/* 
+    Document   : EstiloUnico
+    Created on : 15/05/2014, 01:28:56 PM
+    Author     : pico
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+#inicio{
+ float: left;
+}
+#otro{
+    background: #ccc;width: 200px;height: 50px;
+}
+
+#solo{
+     position: absolute;
+    
+ width: 150px;
+ height: 150px;
+ background: #333333;
+ opacity: 0.9;
+}
+#tamaño{
+    position: absolute;
+    top: 150px;
+    left: 200px;
+ width: 600px;
+ height: 600px;
+ background: #333333;
+ opacity: 0.9;
+ }
+
+
+.marcar > div { 
+    display: inline-block;
+    /*** Sólo a efectos de visualización ***/ 
+    background: #F3F3A1;
+    padding:8px;
+   background-color: #f5f5f5;
+   border-bottom: 1px solid #999999;
+   border-right: 1px solid #999999; 
+} 
+#marcar{
+    padding:8px;
+   background-color: #f5f5f5;
+   border-bottom: 1px solid #999999;
+   border-right: 1px solid #999999;   
+}
+
+.min{ 
+width: 80px;
+height: 80px;
+
+} 
+.min:hover{
+    width: 100px;
+    height: 100px;
+}
+
+#registro{
+}
+#registro{
+    style:'display:table-cell';
+    background-color: #ccc;
+} 
+
+#categorias{
+    style:'display:table-cell';
+    background-color: #ccc;
+    vertical-align: top;
+} 
+
+input{  
+    background-color: #fff;
+ width: auto;
+ height: auto;
+ margin: 0 auto 15px auto;
+ padding: 5px;
+ border: 1px solid #ccc;
+
+ -moz-border-radius: 11px;
+ -webkit-border-radius: 11px;
+ border-radius: 11px;
+ behavior: url(border-radius.htc);
+}
+#button{
+    border: solid;
+    padding: 5px 10px;
+    border-color: silver;
+}
+#button:hover {
+        color: #145675;
+
+        -moz-transition: color 0.25s ease-in-out;
+        -webkit-transition: color 0.25s ease-in-out;
+        transition: color 0.25s ease-in-out;
+    }
+    #lupa{
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;    
+    }
+    #buscar{
+        vertical-align: middle;
+    }
+.button:hover {
+    width: 160px;
+    height: 35px;
+    line-height: 35px;
+    color: crimson;
+} 
+#borde{ float: left;
+        margin: 5px;
+        height: 10px;
+        border: #145675;
+}
+
+#opciones{
+     position: absolute;
+}
+
+.menu {
+width: 100%;
+float: left;
+font-family:"Lucida Sans Unicode", "Trebuchet Unicode MS", "Lucida Grande",sans-serif;
+font-size:13px; /* Tamaño de la fuente */
+font-weight:bold;
+}
+.menu ul {
+float:left;
+height:0px;
+list-style:none;
+margin:0;
+padding:0;
+border-radius: 0px 0px 20px 20px; /* Bordes redondeados del submenú */
+}
+.menu li{
+float:left;
+padding:0px;
+}
+.menu li a{
+background:#333333 url(http://lh4.googleusercontent.com/-iqgCHipLGx4/T5DqLrsVALI/AAAAAAAACaI/bcIY7SV8s5I/s35/separador.gif) bottom right no-repeat;
+color:#cccccc; /* Color de la fuente */
+display:block;
+font-weight:normal;
+line-height:35px;
+margin:0px;
+padding:0px 25px; /* Espacio entre cada pestaña */
+text-align:center;
+text-decoration:none;
+}
+.menu li a:hover, .menu ul li:hover a {
+background: #2580a2; /* Color de las pestañas al pasar el cursor */
+color:#FFFFFF; /* Color del texto al pasar el cursor */
+text-decoration:none;
+}
+.menu li ul {
+background:#333333; /* Color de fondo del submenú */
+display:none;
+height:auto;
+padding:0px;
+margin:0px;
+position:absolute;
+width:200px; /* Ancho del submenú */
+z-index:100;
+border-top:1px solid #fff; /* Borde superior del submenú */
+}
+.menu li:hover ul{
+display:block;
+}
+.menu li li {
+display:block;
+float:none;
+margin:0px;
+padding:0px;
+width:200px;
+}
+.menu li:hover li a {
+background:none;
+border-radius: 0px 0px 20px 20px; /* Borde de las subpestañas */
+}
+.menu li ul a {
+display:block;
+height:35px;
+font-size:12px;
+font-style:normal;
+margin:0px;
+padding:0px 10px 0px 15px;
+text-align:left;
+}
+.menu li ul a:hover, .menu li ul li:hover a{
+background:#2580a2; /* Color de las subpestañas al pasar el cursor */
+color:#ffffff;
+text-decoration:none;
+}
+
+#search {
+width: 228px; /* Ancho del buscador */
+height: 22px;
+float: right;
+text-align: center;
+margin-top: 6px;
+margin-right: 6px;
+/* Imagen de fondo del buscador */
+background: url(http://4.bp.blogspot.com/_qgZA1ny_dAs/Szuhn02zO6I/AAAAAAAADdI/u2etpRWlwF8/s1600/search-bar.png) no-repeat;
+}
+#search-box {
+margin-top: 3px;
+border:0px;
+background: transparent;
+text-align:center;
+}
+
+div.buscador {
+	border:1px solid #d7d7d7;
+	padding: 4px;
+	height: 22px;
+	width: 270px;
+}
+input.criterio{
+	border: 2px;
+	position: relative;
+	background: #FFFFFF;
+	outline: none;
+	bottom: 4px;
+	padding: 2px;
+        height: 25px;
+}
+input.image_buscar {
+	width: 20px;
+	border: 0px;
+	position: relative;
+	top:1px;
+}
+
+#Info{
+width:350px;
+height:150px;
+overflow: auto;
+}
+
+div.sugerencias{
+	border:1px solid #d7d7d7;
+	padding: 4px;
+	height: 22px;
+	width: 270px;
+}
+
+div.sugerencias:hover{
+    opacity: 0.2;
+    
+}
+div.sugerencias:out{
+    opacity: 1;
+    
+}
+#portada{
+  width: 400px;
+    height: 30px;
+    position: absolute;
+    background: #999999;
+
+}
+#contenido{
+    position: absolute;
+    height: 100px;
+    width: 20px;
+    top: 40px;
+    background: violet;
+}
+#pie{
+    position: absolute;
+    top:200px;
+    left: 10px;
+    height: 300px;
+    width: 300px;
+    background: burlywood;
+    
+}
+#opciones{top:30px; left: 5px;
+          position: absolute;
+          border-width: 3px;
+          border-color: cyan;
+          background: #F3F3A1;
+          width: 250px;
+
+}
+#otro{top:30px; left: 250px;
+          position:absolute;
+          border-width: 3px;
+          border-color: cyan;
+          background: violet;
+          width: 250px;
+          height: 20px;
+}
+#milink:hover{
+    text-decoration: none;
+background: #77AADD;
+}
+#milink:active{
+    text-decoration: none;
+}
+#milink:visited{
+    text-decoration: none;
+}
+#resultado{
+         top:5px; 
+         left: 5px;
+          position: absolute;
+          border-width: 3px;
+          border-color: cyan;
+          background: #F3F3A1;
+          width: 250px;
+    
+}
+#marcar{
+    width: 120px;
+    height: 130px;
+}
+#referencia:link   
+{   
+ text-decoration:none;   
+} 
+#divBuscar{
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    width:600px;
+    height: 30px;
+    background:#2580a2;
+   
+        
+}
+#mostrar{
+   float:left;
+   background: #ccc; 
+   height: 742px; 
+    
+}
+
