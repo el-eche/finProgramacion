@@ -142,11 +142,23 @@ ResultSet rs;
     //  HttpSession sesion=request.getSession();
    //   ResultSet res=(ResultSet)sesion.getAttribute("Resultado");
                 String va="";
+                String estado="Aprobada";
      String v=request.getParameter("caja"); 
      int a=bu.idCategoria(v);
      for(int i=0;i<bu.JuegoCategoria(a).size();i++){
       String nom=bu.JuegoCategoria(a).get(i).getNombre();
       String ur=bu.JuegoCategoria(a).get(i).getImagen();  
+      int num=bu.numeroJuego(nom);
+      int uno=0;
+      ResultSet res=bu.traerVersiones(num);
+      while(res.next()){
+        String est=res.getString("estado");
+        if(est.equals(estado)){
+        
+        
+      
+      
+      
   // response.reset();
 //response.setContentType("image/jpeg");  
   %>
@@ -158,7 +170,9 @@ ResultSet rs;
      height="100" onmouseover="this.width=150;this.height=150;"  onmouseout="this.width=100;this.height=100;" alt="#"/>	--%>				
 </a>
       </div>
-   <% }%>
+   <% }//fin if est
+      }//fin while res
+  }%>
        </div>
         </form>
     </body>
