@@ -4,6 +4,7 @@
     Author     : pico
 --%>
 
+<%@page import="javax.swing.JOptionPane"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="conexion.*"%>
@@ -20,15 +21,32 @@
     </head>
     <body id="MiBody" background="http://www.fotos-bonitas.com/wp-content/uploads/2014/01/Fondos-de-pantalla-gratis.jpg" style="background-attachment: fixed">
   
-         <div id="iniciarSesion" style="float: right; border-color: aqua; height: 500px;">
+         
+        <%
+            buscar bu=new buscar();
+            HttpSession se=request.getSession(true);
+            String us=(String)se.getAttribute("usuario");
+            String pas=(String)se.getAttribute("pass");%>
+      <%
+       if(us==null||us==""){%>
+        <div id="iniciarSesion" style="float: right; height: 500px">
                 <a href="IniciarSesion.jsp"> Crear Cuenta :<img src="http://localhost/Imagenes/Registrarse.png" width="30" height="30"></a><br><br>
                 <a href="IniciarSesion.jsp"> Iniciar Sesion :<img src="http://localhost/Imagenes/sesion.png" width="30" height="30"></a><br>  
                    </div>
-        <% 
-            HttpSession se=request.getSession(true);
-            String us=(String)se.getAttribute("usuario");
-            String pas=(String)se.getAttribute("pass");
-        buscar bu=new buscar();
+       <%}else
+       {
+       perfil per=bu.verEspecifico(us);
+       String ima=per.getImagen();
+       %>
+      <div id="iniciarSesion" style="float: right; height: 500px">
+          <a href="MiPerfil.jsp">Mi perfil<img src="http://localhost/Imagenes/<%=ima%>" class="min"></a>
+          
+          <a href="FinSession"> Cerrar Sesion :<img src="http://localhost/Imagenes/cerrar-sesion-icono.png" width="30" height="30"></a><br>  
+   </div> 
+           
+       <%}%>
+        <%
+        
     String ju=request.getParameter("juego");
     juego Juego=new juego();
     Juego=bu.traerJuegoUn(ju);
@@ -39,9 +57,11 @@
     perfil per=new perfil();
     per=bu.verEspecifico(desarrollador);
     String imaDes=per.getImagen();
+   
     int jue=bu.numeroJuego(ju);
     ResultSet rs=bu.traerCat(jue);
-  
+    boolean si=bu.existeCompra(jue, us);
+     
     
     %>
     <h2>Descripcion del juego </h2>
@@ -58,6 +78,48 @@
     %>
     <%=tip%><br/> 
    <% }%>
+   
+  
+   <% String estado="Aprobada";
+   String otraver="";
+    ResultSet res=bu.traerVersiones(jue);
+    ResultSet otrores=bu.traerVersiones(jue);
+   int ord=0;
+   int orden=0;
+   int otrord=0;
+   while(otrores.next()){//acá me quedo con el mayor orden de alta que esté aprobado
+        String esta=otrores.getString("estado");
+       String vera=otrores.getString("id_version");
+       if(esta.equals(estado)){
+           orden=otrores.getInt("ordenalta");
+          if(otrord<orden){
+           otrord=orden;
+           
+          }
+            
+         }//fin if est.equals
+       }//fin otrores 
+
+       while(res.next()){
+       String est=res.getString("estado");
+       String ver=res.getString("id_version");
+       ord=res.getInt("ordenalta");
+        String desca=res.getString("linkdescarga");
+        String tama=res.getString("tamaño");
+       if(est.equals(estado)&&ord==otrord){%>
+           
+    <br/> Ultima Version Aprobada : <%=ver%><br>
+       Tamaño(kb) :&nbsp;&nbsp;&nbsp;&nbsp;<%=tama%><br>     
+      <% if(si==true){%>
+         <a href="<%=desca%>">Descarga Aquí </a>
+ 
+       <% } }//fin if est.equals
+           
+           
+       }   //fin while res
+       
+   %>
+   
   <br/>  Comentarios : <br/>
    <table  border="5">
  <%  ArrayList<comentario> comenta=bu.comentarioXjuego(jue);
@@ -126,16 +188,9 @@
    
  <%
     if(us==null&&pas==null){%>
-    <h2>Debes de iniciar sesion o crearte una cuenta para comprar un juego<br>
-    Lo puedes realizar el la seccion inicio o registro, gracias</h2>
-  <%  }else
-    {  String nom=Juego.getNombre();  %>
-    <form action="comprarJuego" method="post">
-        <input type="text" name="juego" value="<%=nom%>" hidden="hidden">
-        <input type="text" name="usuario" value="<%=us%>" hidden="hidden">
-        <input type="image" src="http://localhost/Imagenes/Boton%20compralo%20ahora.jpg">   
-    </form>
-  <%}
- %>
+    <h2>Para utilizar todas las funcionalidades de este sitio debes<br>
+    <a href="IniciarSesion.jsp"> iniciar sesion</a> ó<a href="IniciarSesion.jsp"> crear una cuenta</a>. Gracias </h2>           
+
+  <%  }%>
     </body>
 </html>

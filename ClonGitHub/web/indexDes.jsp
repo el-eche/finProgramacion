@@ -44,6 +44,9 @@ a:link
 HttpSession ses=request.getSession(true);
 String use=(String)ses.getAttribute("usuario");
 String pass=(String)ses.getAttribute("pass");
+
+String ti="Desarrollador";
+String cli="Cliente";
            %>  
            <script type="text/javascript">
            function traerMisJuegos(){
@@ -60,21 +63,21 @@ String pass=(String)ses.getAttribute("pass");
          
            
            </script>
-        <%--   <script type="text/javascript">
-         function traerjuego(){
-               jueg=document.getElementById("criterio").value;
-               dataStr='juego='+jueg;
-               $.ajax({
-                 type:"POST",
-                 url:"traerJuego.jsp",
-                 data:dataStr,
-                 success:function (data){
-             $("#tamaño").fadeIn(1000).html(data);        
-                 }
-                   
-               });
-         }
-           </script> --%>
+            <script type="text/javascript">
+           function traerJuegosparaComprar(){
+           $.ajax({
+              type:"POST",
+              url:"comprarJuegos.jsp",
+              data:"",
+              success:function (data){
+                  $("#tamaño").fadeIn(1000).html(data);
+              }
+               
+           });
+           }  
+         
+           
+           </script>
            
     </head>
     <body background="http://localhost/Imagenes/Fondos-de-pantallaPrincipal.jpg">
@@ -84,6 +87,7 @@ String pass=(String)ses.getAttribute("pass");
                 <tr><h2><font color="red">Categorias</font></h2></tr>
         <%
 ResultSet rs;
+String tipo="";
         buscar bu=new buscar();
         rs=bu.traerCategorias();
         while(rs.next()){ %>           
@@ -103,6 +107,7 @@ ResultSet rs;
        {
        perfil per=bu.verEspecifico(use);
        String ima=per.getImagen();
+       tipo=per.getTipo();
        %>
       <div id="iniciarSesion" style="float: right; height: 500px">
           <a href="MiPerfil.jsp">Mi perfil<img src="http://localhost/Imagenes/<%=ima%>" class="min"></a>
@@ -114,15 +119,24 @@ ResultSet rs;
            
             
           <%--  <div id="margen" style="float: left;margin: 5px;height: 150px;width: 700px;">--%>
-              
+          <%if(tipo.equals(ti)){%>    
            </div> 
-           <div id="otro" style="background: #ccc;width: 450px;height: 50px;">
-          <a href="altaJuego.jsp" >Agregar Juegos Nuevo</a>&nbsp;&nbsp;&nbsp;
-          <a href="AltaVersion.jsp" >Alta Version Nueva</a>&nbsp;&nbsp;&nbsp;
+           <div id="otro" style="background: #ccc;width: 450px;height: 30px;">
+          <a href="altaJuego.jsp" >Agregar Juegos Nuevo</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="AltaVersion.jsp" >Alta Version Nueva</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a href="#" onclick="traerMisJuegos();">Todos mis Juegos</a> 
      
      </div>  
-           
+           <%}else if(tipo.equals(cli)){%>    </div> 
+           <div id="otro" style="background: #ccc;width: 450px;height: 30px;">
+          <a href="#" onclick="traerMisJuegos();">Mis Compras de Juegos</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="#" onclick="traerJuegosparaComprar();">Comprar Juego</a>&nbsp;&nbsp;&nbsp;
+
+     </div> <%}else{%>
+<h2>Para utilizar todas las funcionalidades de este sitio debes<br>
+    <a href="IniciarSesion.jsp"> iniciar sesion</a> ó<a href="IniciarSesion.jsp"> crear una cuenta</a>. Gracias </h2>           
+
+<%}%>
            <div id="divBuscar">
                   
       

@@ -12,6 +12,11 @@ root {
 #inicio{
  float: left;
 }
+
+body{   
+ background-attachment: fixed;   
+}
+
 #otro{
     background: #ccc;width: 200px;height: 50px;
 }
@@ -59,6 +64,16 @@ height: 80px;
 .min:hover{
     width: 100px;
     height: 100px;
+}
+
+.otromin{ 
+width: 100px;
+height: 100px;
+
+} 
+.otromin:hover{
+    width: 110px;
+    height: 110px;
 }
 
 #registro{
@@ -321,6 +336,12 @@ background: #77AADD;
     width: 120px;
     height: 130px;
 }
+
+#otromarcar{
+    width: 140px;
+    height: 160px;
+}
+
 #referencia:link   
 {   
  text-decoration:none;   
