@@ -60,12 +60,7 @@ ResultSet rs;
       </div>
         <%}
        // }
-
-       %>
-       
-        
-        <p><font style="font-size: large" color="blue">Bieeeeeen</p>
-      <%  }
+        }
         }
 
    %>

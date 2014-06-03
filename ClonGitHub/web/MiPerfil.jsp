@@ -15,9 +15,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link type="text/css" href="EstiloUnico.css" rel="stylesheet"> 
         <title>Mi Perfil</title>
-        <%
-            HttpSession sesion=request.getSession(true);
-        %>
+      <%
+       String vac="";
+       HttpSession sesion=request.getSession(true);
+      String ses=(String)sesion.getAttribute("usuario");
+       if(ses==vac||ses==(null)){
+     int a=JOptionPane.showOptionDialog(null,"El sitio solicita que inicie sesiòn", "Error de sesión",JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+    if(a==0){ response.sendRedirect("IniciarSesion.jsp"); } 
+    else{response.sendRedirect("indexDes.jsp");}
+     } else{%>
     </head>
    
     <body background="http://localhost/Imagenes/Fondos-de-pantallaPrincipal.jpg" style="background-attachment: fixed; opacity: 0.8;">
@@ -32,14 +38,41 @@
         String nom=per.getNombre();
         String ape=per.getApellido();
         String fech=per.getFechanac();
-        int edad=ed.getedad(fech);
+       int edad=ed.getedad(fech);
         String ima=per.getImagen();
         String tip=per.getTipo();
         String desa="Desarrollador";
        
         %>
         <h2>Mis Datos</h2>
-        <div id="mostrar" style="float:left; background: #ccc; height:auto ">
+          <div id="iniciarSesion" style="float: right; height: 500px">
+          <a href="MiPerfil.jsp">Mi perfil<img src="http://localhost/Imagenes/<%=ima%>" class="min"></a>
+          
+          <a href="FinSession"> Cerrar Sesion :<img src="http://localhost/Imagenes/cerrar-sesion-icono.png" width="30" height="30"></a><br>  
+   </div> 
+        
+        <div id="divBuscar" style="position: absolute;
+    top: 30px;
+    left: 330px;
+    width:400px;
+    height: 30px;
+    background:#2580a2;">
+                  
+      
+    <!-- este div contendrá el listado de coincidencias -->
+   
+    <!-- este input contendra el criterio a buscar en autocompletado -->
+    <form name="juegos" action="traerJuego.jsp" method="post">
+     <table> <tr>    <td><input type="text" name="criterio" class="criterio" id="criterio" style="width: 100px;"/></td>
+<%--<input type="image" src="http://localhost/Imagenes/search.png" class="image_buscar">--%>
+        <td><input type="submit" value="Buscar Juego"> </td> 
+ </tr></table>       
+    </form>
+
+       
+        
+          </div>
+        <div id="mostrar" style="float:left; background: #ccc; height:auto;position: absolute; ">
             <h4>Nick : <%=nic%></h4>
             <h4>Correo Electronico : <%=ema%></h4>
             <h4>Nombre : <%=nom%></h4>
@@ -73,10 +106,10 @@
                  <td><h4>Nombre Juego <%=nomju%></h4></td></tr>
                                    
  <tr> <td>   <h4>Version :<%=idv%></h4></td>
-            <td>   <h4>Estado :<%=est%></h4></td>&nbsp;&nbsp;<%
+            <td><h4>Estado :<%=est%></h4></td>&nbsp;&nbsp;<%
             if(est.equals(rechazada)){
             %>
-            <td><h4>&nbsp;&nbsp;  Motivo : <%=mot%></h4></td></tr>
+            <td><h4>&nbsp;  Motivo : <%=mot%></h4></td></tr>
                                     
             <%}
         
@@ -89,4 +122,5 @@
   </tr></table>
         </div>
     </body>
+   <%} %>
 </html>

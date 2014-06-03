@@ -15,41 +15,65 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       
         <title>Buscar Juegos</title>
-        <link type="text/css" href="estiloNuevo.css" rel="stylesheet">
-        <link type="text/css" href="estilo.css" rel="stylesheet">
+        <link type="text/css" href="EstiloUnico.css" rel="stylesheet">
         </head>
-        <body>
-            <div id="tamaño2" style="position: relative">   
+        <body background="http://localhost/Imagenes/Fondos-de-pantallaPrincipal.jpg">
+              
         <%
         String nom=request.getParameter("criterio");
         int cont=0;
-        ResultSet rs;
+        ResultSet rs,sr;
         juego ju=new juego();
         buscar bu=new buscar();
+        sr=bu.juegoAutoNombre(nom);
         rs=bu.juegoAutoNombre(nom);
+        while(sr.next()){
+        cont++;
+        }%>
+          <div id="resultado" class="resultado" style="background: #999999;float: left;width: auto;-webkit-border-radius: 40px;-moz-border-radius: 40px;border-radius: 40px;">       
+        <h2>Resultados para <%=nom%> (<%=cont%> resultados)</h2></div>
+         
+        <div style="  position: absolute;top: 100px;left: 200px;width: 600px;
+ height: auto;
+ background: #999999;
+ opacity: 0.9;">Ordenado por <select><option>Alfabeticamente(a-z)</option>
+                <option>Por ventas (desc)</option></select>&nbsp;&nbsp;Precio<select><option>$0 - 3</option>
+                
+                     <option>$3 - $10</option><option>Mas de $10</option></select></div>  
         
-        while(rs.next()){
+        <div id="tamaño2" style="  position: absolute;
+    top: 150px;
+    left: 200px;
+ width: 600px;
+ height: auto;
+ background: #333333;
+ opacity: 0.9;">
+             
+ <%--  <div class="ribbon"><div class="ribbon-stitches-top"></div><strong class="ribbon-content"><h1>Resultados para <%=nom%> (<%=cont%> resultados) </h1></strong><div class="ribbon-stitches-bottom"></div></div>           
+    --%>         
+        <%while(rs.next()){
             String nombre=rs.getString("nombre");
-            String ur=rs.getString("imagen");%>
+            String ur=rs.getString("imagen");
+            double pre=rs.getDouble("precio");
+            int num=bu.numeroJuego(nombre);
+            ResultSet otrosr=bu.traerCat(num);
+            
+        %>
         
-                <div id="marcar" class="marcar" style="float: left;">  
-                    <a href="mostrarJuego.jsp?juego=<%=nombre%>" id="referencia"><br/><font color="red"><%=nombre%><br/>
- <img class="min" src="http://localhost/Imagenes/<%=ur%>" 
+          <div id="divotromarcar" class="divotromarcar">  
+ <br/><font color="red"><%=nombre%><br/>
+ <img class="otromin" src="http://localhost/Imagenes/<%=ur%>" 
  onmouseover="this.style.opacity=0.5" onmouseout="this.style.opacity=1"  alt="#"/>
+ <br/><font color="red">Precio u$u<%=pre%> /<%while(otrosr.next()){
+            String cate=otrosr.getString("tipo");%><%=cate%> ,<% }//fin while otrosr%>
     <%--  <img class="min" src="http://localhost/Imagenes/<%=ur%>"width="100" 
      height="100" onmouseover="this.width=150;this.height=150;"  onmouseout="this.width=100;this.height=100;" alt="#"/>	--%>				
-</a><br>
-      </div>
+     <br/> </div>&nbsp;&nbsp;
       
-           <% 
-      cont++;   }
+           <%  
+   }//fin while rs
         %>
-    </div>     <div id="resultado" class="resultado" style="background: #77AADD;float: left">       
-        <p>Resultados para <%=nom%> = <%=cont%></p></div>
-            <%
-        %>
-    
-    
-  
+    </div> 
+    </div> 
     </body>
 </html>
