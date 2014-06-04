@@ -16,6 +16,49 @@
       
         <title>Buscar Juegos</title>
         <link type="text/css" href="EstiloUnico.css" rel="stylesheet">
+         <script language="JavaScript" type="text/javascript" src="jquery.js" charset="utf-8"></script>
+         <script type="text/javascript">
+           $(document).ready(function(){
+    $("select[name=select1]").change(function(){
+           juego=$('select[name=select1]').val();
+           nombre=document.getElementById("oculto").value;
+          var ajax_data = {
+  "juego"     : juego,
+  "nombre"   : nombre,
+
+};
+           $.ajax({
+               url:"ordenarJuegos.jsp",
+               type:"POST",
+               data:ajax_data,
+               success:function (data){
+               $("#tamaño2").fadeIn(1000).html(data);    
+               }
+               
+           });
+        });
+        $("select[name=select2]").change(function(){
+            juego=$('select[name=select2]').val();
+            nombre=document.getElementById("oculto").value;
+            dataString='juego='+juego+'oculto='+nombre;
+      var ajax_data = {
+  "juego"     : juego,
+  "nombre"   : nombre,
+
+};
+           $.ajax({
+               url:"ordenarJuegos.jsp",
+               type:"POST",
+               data:ajax_data,
+               success:function (data){
+               $("#tamaño2").fadeIn(1000).html(data);    
+               }
+               
+           });
+        });
+
+});
+         </script>
         </head>
         <body background="http://localhost/Imagenes/Fondos-de-pantallaPrincipal.jpg">
               
@@ -32,14 +75,14 @@
         }%>
           <div id="resultado" class="resultado" style="background: #999999;float: left;width: auto;-webkit-border-radius: 40px;-moz-border-radius: 40px;border-radius: 40px;">       
         <h2>Resultados para <%=nom%> (<%=cont%> resultados)</h2></div>
-         
+        <input type="text" id="oculto" name="oculto" value="<%=nom%>" hidden="">
         <div style="  position: absolute;top: 100px;left: 200px;width: 600px;
  height: auto;
  background: #999999;
- opacity: 0.9;">Ordenado por <select><option>Alfabeticamente(a-z)</option>
-                <option>Por ventas (desc)</option></select>&nbsp;&nbsp;Precio<select><option>$0 - 3</option>
+ opacity: 0.9;">Ordenado por <select name="select1"><option value="Alfabetica">Alfabeticamente(a-z)</option>
+                <option value="Ventas">Por ventas (desc)</option></select>&nbsp;&nbsp;Precio<select name="select2"><option value="menostres">$0 - 3</option>
                 
-                     <option>$3 - $10</option><option>Mas de $10</option></select></div>  
+                    <option value="menosdiez">$3 - $10</option><option value="masdiez">Mas de $10</option></select></div>  
         
         <div id="tamaño2" style="  position: absolute;
     top: 150px;

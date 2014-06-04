@@ -13,7 +13,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    </head>
-   <body background="http://localhost/Imagenes/Fondos-de-pantallaPrincipal.jpg"> <%
+   <body background="http://localhost/Imagenes/Fondos-de-pantallaPrincipal.jpg"> 
+       <%
 HttpSession ses=request.getSession(true);
 String use=(String)ses.getAttribute("usuario");
 String pass=(String)ses.getAttribute("pass");
