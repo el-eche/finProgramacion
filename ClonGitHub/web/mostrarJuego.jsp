@@ -15,7 +15,7 @@
 <html>
     <head>
       
-      <title>JSP Page</title>
+      <title>Mostrar Juego</title>
         <LINK href="estilo.css" rel="stylesheet" type="text/css">
       <meta content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
     </head>

@@ -34,7 +34,7 @@
              int a=JOptionPane.showOptionDialog(null,"El sitio solicita que inicie sesiòn", "Error de sesión",JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
              if(a==0){ response.sendRedirect("IniciarSesion.jsp"); } 
              else{response.sendRedirect("indexDes.jsp");}
-             } else{%>
+             } else{     %>
              
             <div id="iniciarSesion" style="float: right; height: 500px">
           <a href="MiPerfil.jsp">Mi perfil<img src="http://localhost/Imagenes/<%=ima%>" class="min"></a>
@@ -74,7 +74,12 @@
                 </a>
             </div>
             <% }
-                }//fin while rs
+      }//fin while rs
+                if(bol==0){%>
+            <h3><font color="red">Todavia no tienes un juego con alguna version aprobada<br>
+            Por dudas comunicate con el administrador de esta web. Gracias
+            </h3>       
+            <%}
             %>  
         </div>
             

@@ -1,0 +1,104 @@
+#cabezera{
+  background: #FFFFFF;
+  height: 100px;
+  width: 1000px;
+  position: absolute;
+  opacity: 0.8;}
+body{
+   background-image: url(http://localhost/Imagenes/Fondos-de-pantallaPrincipal.jpg); 
+   background-attachment: fixed;  
+}
+#buscar{
+    position: absolute;
+ 
+    top: 50px;
+    left: 500px;
+}
+#lupa{
+   top: 50px;
+   left: 600px;
+}
+#inSesion{
+ position: absolute;
+   top: 10px;
+   left: 850px; 
+   width: auto;
+   height: 30px;
+    
+}
+
+#inicio{
+    position: absolute;
+    top:110px;
+    left: 130px;
+    width: 800px;
+    height: 50px;
+    background: #999999;
+    opacity: 0.8;
+}
+
+#medio{
+ position: absolute;
+    top:150px;
+    left: 100px;
+    width: 800px;
+    height: 440px;
+}
+
+#categoria{
+    position: absolute;
+    width: 200px;
+    height: 440px;
+    background: #999999;
+    opacity: 0.8;
+}
+
+#resto{
+    position: absolute;
+    left: 220px;
+    width: 580px;
+    height: 440px;
+    background: #999999;
+    opacity: 0.7;
+}
+
+#pie{
+    position: absolute;
+    top: 600px;
+    left: 100px;
+  background: #999999;
+     height: 50px;
+  width: 800px;
+  opacity: 0.8;  
+}
+
+#mifuente{
+    position: absolute;
+    top: 10px;
+    color:#FFFFFF;   
+}
+#segundafuente{
+    position: absolute;
+    top: 5px;
+    left: 300px;
+    color: #FFFFFF;   
+}
+a:link   
+{   
+ text-decoration:none;
+}
+#mifoto{
+    position: absolute;
+    top: 10px;
+}
+
+.min{ 
+width: 80px;
+height: 80px;
+
+} 
+.min:hover{
+   opacity: 1;
+}
+
+

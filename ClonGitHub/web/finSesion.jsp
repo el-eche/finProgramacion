@@ -23,7 +23,7 @@
    <script LANGUAGE="JavaScript">
 function redireccionar()
 {
-location.href="https://www.google.com.uy/";
+location.href="http://localhost:8084/ClonGitHub/indexDes.jsp";
 }
 setTimeout ("redireccionar()", 1500);
 

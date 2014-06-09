@@ -19,10 +19,10 @@
         String usuario=request.getParameter("usuario");
         String pico="Pico";
  if(bu.existeNick(usuario)){%>
- <div id="Error" style="font-weight: bolder;"><font color="red"><h4> El nombre: <%=usuario%> ya está en uso</h4></div>
+ <div id="Error" style="font-weight: bolder;"><font color="red"><h4><img src="http://localhost/Imagenes/alerta.png" width="20" height="20">El nick ya está en uso</h4></div>
         <% }
         else{%>
- <div id="Error" style="font-weight: bolder;"><font color="green"><h4>Bienvenido a mi web: <%=usuario%></h4></div>
+ <div id="Error" style="font-weight: bolder;"><font color="green"><h4><img src="http://localhost/Imagenes/exito.png" width="20" height="20">El nick ya está</h4></div>
         <% }%>
         
     </body>
