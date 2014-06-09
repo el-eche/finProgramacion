@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link type="text/css" href="EstiloPrueba.css" rel="stylesheet"> 
+        <link type="text/css" href="EstiloPruebas.css" rel="stylesheet"> 
         <script language="JavaScript" type="text/javascript" src="jquery.js" charset="utf-8"></script>
         <script type="text/javascript">
         </script>

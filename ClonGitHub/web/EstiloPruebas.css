@@ -95,10 +95,12 @@ a:link
 .min{ 
 width: 80px;
 height: 80px;
-
 } 
 .min:hover{
    opacity: 1;
 }
-
+.otromin{ 
+width: 30px;
+height: 30px;
+} 
 

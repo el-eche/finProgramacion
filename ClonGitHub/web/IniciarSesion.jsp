@@ -12,8 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Iniciar Sesion</title>
-        <script type="text/javascript" src="jquery.js"></script>
-        <link type="text/css" href="estilo.css" rel="stylesheet">
+        <link type="text/css" href="EstiloPruebas.css" rel="stylesheet">
         <script language="JavaScript" type="text/javascript" src="jquery.js" charset="utf-8"></script>
         <script type="text/javascript" language="javascript">
         $(window).load(function(){
@@ -157,13 +156,26 @@ function cambiarDisplay() {
 
     </head>
     <%String url="http://localhost/Imagenes/Fondos-de-pantallaPrincipal.jpg";%>
-    <body background=<%=url%> > 
-
-        
-        <div id="inicio" style="float: left;">
+    <body> 
+    <div id="cabezera"><img src="http://localhost/Imagenes/iconoJuego.png"><img src="http://localhost/Imagenes/TPlay.jpg">
+            <div id="buscar"> <form name="juegos" action="traerJuego.jsp" method="post">
+                    <table> <tr>    <td><input type="text" name="criterio" class="criterio" id="criterio" style="width: 100px;border-radius: 25px;" placeholder="Buscar juegos :"/></td>
+<%--<input type="image" src="http://localhost/Imagenes/search.png" class="image_buscar">--%>
+                            <td><input type="image" src="http://localhost/Imagenes/lupaBuscar.jpg" width="30" height="25" style="position: absolute; top: 3px;"> </td> 
+ </tr></table>       
+    </form></div>   
+                            
+                            <div id="inicio"><a href="indexDes.jsp" style="color: #FFFFFF;">
+                <img id="mifoto" src="http://localhost/Imagenes/home.png" class="otromin">
+                <font style="position: absolute; top:15px;left: 30px;">Inicio</a></div>
+    </div>
+                            
+                            
+    <div id="medio">       
+<div id="miinicio" style="position: absolute;left: 20px; ">
             <form id="iniciar" action="validarInicio" method="post">
             <table name="iniciarSesion" border="10">
-                <tr><h2>Iniciar Sesion </h2></tr>
+                <h3>Iniciar Sesion </h3>
             <% String error=request.getParameter("Error");
      if(error!=null){%>
             <tr><td><div id="resp"><%=error%></div></td></tr> 
@@ -179,10 +191,10 @@ function cambiarDisplay() {
             </table>
               </form>
         </div>
-    <center>  <div id="registro" align="center" style="">
+  <div id="registro" style="position: absolute; left: 400px;">
             <form name="mostrarimagen" action="registrarNuevo.jsp" method="post" enctype="multipart/form-data">
             <table name="registrarse" border="5">   
-                <tr><h2>Registrarse </h2></tr>
+                <tr><h3>Registrarse </h3></tr>
             <tr><td>      
           Ingrese Nick :   <input type="text" name="usuario" id="usuario" placeholder="Nick :" required="required">
           <div id="Info" style="float: right"></div>
@@ -206,5 +218,10 @@ function cambiarDisplay() {
             </table></form>
         </div></center> 
         <div id="mio"></div>
+        </div> 
+    
+  <div id="pie"><font id="mifuente">@2014 TPlay Store
+            <font id="segundafuente"><a href="indexDes.jsp" style="color: #FFFFFF;">Home</a>
+        </div>    
     </body>
 </html>

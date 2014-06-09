@@ -16,11 +16,21 @@
     <head>
       
       <title>Mostrar Juego</title>
-        <LINK href="estilo.css" rel="stylesheet" type="text/css">
       <meta content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+       <link type="text/css" href="EstiloPruebas.css" rel="stylesheet"> 
     </head>
-    <body id="MiBody" background="http://www.fotos-bonitas.com/wp-content/uploads/2014/01/Fondos-de-pantalla-gratis.jpg" style="background-attachment: fixed">
-  
+    <body>
+   <div id="cabezera"><img src="http://localhost/Imagenes/iconoJuego.png"><img src="http://localhost/Imagenes/TPlay.jpg">
+            <div id="buscar"> <form name="juegos" action="traerJuego.jsp" method="post">
+                    <table> <tr>    <td><input type="text" name="criterio" class="criterio" id="criterio" style="width: 100px;border-radius: 25px;" placeholder="Buscar juegos :"/></td>
+<%--<input type="image" src="http://localhost/Imagenes/search.png" class="image_buscar">--%>
+                            <td><input type="image" src="http://localhost/Imagenes/lupaBuscar.jpg" width="30" height="25" style="position: absolute; top: 3px;"> </td> 
+ </tr></table>       
+    </form></div>
+      
+                            
+
+       
          
         <%
             buscar bu=new buscar();
@@ -29,22 +39,38 @@
             String pas=(String)se.getAttribute("pass");%>
       <%
        if(us==null||us==""){%>
-        <div id="iniciarSesion" style="float: right; height: 500px">
-                <a href="IniciarSesion.jsp"> Crear Cuenta :<img src="http://localhost/Imagenes/Registrarse.png" width="30" height="30"></a><br><br>
-                <a href="IniciarSesion.jsp"> Iniciar Sesion :<img src="http://localhost/Imagenes/sesion.png" width="30" height="30"></a><br>  
+  <div id="inSesion">
+            <a href="IniciarSesion.jsp"> Crear Cuenta :<img src="http://localhost/Imagenes/Registrarse.png" width="20" height="20"></a><br><br>
+                <a href="IniciarSesion.jsp"> Iniciar Sesion :<img src="http://localhost/Imagenes/sesion.png" width="20" height="20"></a> 
                    </div>
        <%}else
        {
        perfil per=bu.verEspecifico(us);
        String ima=per.getImagen();
        %>
-      <div id="iniciarSesion" style="float: right; height: 500px">
-          <a href="MiPerfil.jsp">Mi perfil<img src="http://localhost/Imagenes/<%=ima%>" class="min"></a>
-          
-          <a href="FinSession"> Cerrar Sesion :<img src="http://localhost/Imagenes/cerrar-sesion-icono.png" width="30" height="30"></a><br>  
-   </div> 
+      <div id="iniciarSesion" style="float: right; height: 500px"> 
+          <a href="FinSession"> Cerrar Sesion :<img src="http://localhost/Imagenes/cerrar-sesion-icono.png" class="otromin"></a><br><br>  
+          <a href="MiPerfil.jsp">Mi perfil<img src="http://localhost/Imagenes/<%=ima%>" class="otromin"></a>
+      </div> 
            
        <%}%>
+    
+     <div id="inicio" style="top: 110px;left: 120px;"><a href="indexDes.jsp" style="color: #FFFFFF;">
+                <img id="mifoto" src="http://localhost/Imagenes/home.png" class="otromin">
+                <font style="position: absolute; top:15px;left: 30px;">Inicio</a></div>
+    </div>
+       
+        <div id="medio">
+            <div id="categoria" style="top: 5px;">
+                 
+            </div>
+   
+                                <div id="resto" style="top: 5px;">
+              
+      
+       
+       
+       
         <%
         
     String ju=request.getParameter("juego");
@@ -64,13 +90,13 @@
      
     
     %>
-    <h2>Descripcion del juego </h2>
-   <h4> Nombre : <%=ju%><br/> 
-    Imagen : <br/><img src="http://localhost/Imagenes/<%=imagen%>" width="60" height="60"/><br/> 
+    <h4>Descripcion del juego </h4>
+    Nombre : <%=ju%>&nbsp;&nbsp;
+    Imagen : <img src="http://localhost/Imagenes/<%=imagen%>" class="otromin"/><br/> 
     Precio (U$): <%=precio%><br/> 
    Descripcion : <%=descripcion%><br/> 
-     Desarrollador : <%=desarrollador%><br/>
- <img src="http://localhost/Imagenes/<%=imaDes%>" width="60" height="60"/><br/> 
+   Desarrollador : <%=desarrollador%>&nbsp;&nbsp;
+ <img src="http://localhost/Imagenes/<%=imaDes%>" class="otromin"/><br/> 
   <br/> Categorias : <br/>
     <%
     while(rs.next()){
@@ -188,9 +214,17 @@
    
  <%
     if(us==null&&pas==null){%>
-    <h2>Para utilizar todas las funcionalidades de este sitio debes<br>
-    <a href="IniciarSesion.jsp"> iniciar sesion</a> ó<a href="IniciarSesion.jsp"> crear una cuenta</a>. Gracias </h2>           
+    <h4>Para utilizar todas las funcionalidades de este sitio debes<br>
+    <a href="IniciarSesion.jsp"> iniciar sesion</a> ó<a href="IniciarSesion.jsp"> crear una cuenta</a>. Gracias </h4>           
 
   <%  }%>
+  
+  </div>  
+                            </div>
+  
+    <div id="pie"><font id="mifuente">@2014 TPlay Store
+            <font id="segundafuente"><a href="indexDes.jsp" style="color: #FFFFFF;">Home</a>
+        </div> 
     </body>
+    <%--                           --%>
 </html>
