@@ -14,15 +14,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Alta de Version</title>
-        <link href="EstiloUnico.css" rel="stylesheet">
+        <link href="EstiloPruebas.css" rel="stylesheet">
         <script language="JavaScript" type="text/javascript" src="jquery.js" charset="utf-8"></script>
         <script type="text/javascript" language="javascript">
 
            
         </script>
     </head>
-    <body background="http://localhost/Imagenes/Fondos-de-pantallaPrincipal.jpg">
-  <%       
+  <body background="http://localhost/Imagenes/Fondos-de-pantallaPrincipal.jpg">
+  
+
+                            
+                            
+                            
+      
+      
+      <%       
             buscar bu=new buscar();
             String vac = "";
             HttpSession sesion = request.getSession();
@@ -35,13 +42,31 @@
              if(a==0){ response.sendRedirect("IniciarSesion.jsp"); } 
              else{response.sendRedirect("indexDes.jsp");}
              } else{     %>
-             
-            <div id="iniciarSesion" style="float: right; height: 500px">
-          <a href="MiPerfil.jsp">Mi perfil<img src="http://localhost/Imagenes/<%=ima%>" class="min"></a>
           
-          <a href="FinSession"> Cerrar Sesion :<img src="http://localhost/Imagenes/cerrar-sesion-icono.png" width="30" height="30"></a><br>  
-   </div>        
-        <div id="tamaño">
+             <div id="cabezera"><img src="http://localhost/Imagenes/iconoJuego.png"><img src="http://localhost/Imagenes/TPlay.jpg">
+            <div id="buscar"> <form name="juegos" action="traerJuego.jsp" method="post">
+                    <table> <tr>    <td><input type="text" name="criterio" class="criterio" id="criterio" style="width: 100px;border-radius: 25px;" placeholder="Buscar juegos :"/></td>
+<%--<input type="image" src="http://localhost/Imagenes/search.png" class="image_buscar">--%>
+                            <td><input type="image" src="http://localhost/Imagenes/lupaBuscar.jpg" width="30" height="25" style="position: absolute; top: 3px;"> </td> 
+ </tr></table>       
+    </form></div>
+                            <div id="iniciarSesion" style="float: right; height: 500px"> 
+          <a href="FinSession"> Cerrar Sesion :<img src="http://localhost/Imagenes/cerrar-sesion-icono.png" class="otromin"></a><br><br>  
+          <a href="MiPerfil.jsp">Mi perfil<img src="http://localhost/Imagenes/<%=ima%>" class="otromin"></a>
+      </div> 
+          </div>                  
+                            
+                            <div id="inicio"><a href="indexDes.jsp" style="color: #FFFFFF;">
+                <img id="mifoto" src="http://localhost/Imagenes/home.png" class="otromin">
+                <font style="position: absolute; top:15px;left: 30px;">Inicio</a></div>
+   <div id="reloj" class="reloj" style="position: absolute;left: 750px;top: 100px;">
+              <embed src="http://www.clocklink.com/clocks/5005-white.swf?TimeZone=UYT&"  width="140" height="50" wmode="transparent" type="application/x-shockwave-flash">
+          </div>
+    
+      <div id="medio" style="background: #999999;opacity: 0.8;">
+          
+     
+
             <%
                 String nom, ur;
                 String aproba = "Aprobada";
@@ -81,7 +106,12 @@
             </h3>       
             <%}
             %>  
-        </div>
+       
+         </div>  
+     
+             <div id="pie"><font id="mifuente">@2014 TPlay Store
+            <font id="segundafuente"><a href="indexDes.jsp" style="color: #FFFFFF;">Home</a>
+        </div> 
             
     </body>
     <%}%>

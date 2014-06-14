@@ -5,8 +5,7 @@
  */
 
 package servlet;
-import Logica.*;
-import conexion.*;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,15 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author pico
  */
-@WebServlet(name = "altaJuego", urlPatterns = {"/altaJuego"})
-public class altaJuego extends HttpServlet {
+@WebServlet(name = "probarRedireccion", urlPatterns = {"/probarRedireccion"})
+public class probarRedireccion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,8 +34,16 @@ public class altaJuego extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-       
+        PrintWriter out = response.getWriter();
+        String nombreJuego=request.getParameter("nombreJuego");
+        String numeroVersion=request.getParameter("numeroVersion");
+        String tamaño=request.getParameter("tamaño");
+        String archivo=request.getParameter("archivo");
+        String precio=request.getParameter("precio");
+        String descripcion=request.getParameter("descripcion");
+        JOptionPane.showMessageDialog(null, nombreJuego+"  "+numeroVersion+"  "+archivo);
+      response.sendRedirect("paginaRedireccionada.jsp?nombreJuego="+nombreJuego);
+   
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -67,37 +73,6 @@ public class altaJuego extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        PrintWriter out = response.getWriter();
-        HttpSession sesion=request.getSession(true);
-        String user=(String)sesion.getAttribute("usuario");
-        String[] opcion=request.getParameterValues("michek");
-        String nomb=request.getParameter("nombreJuego");
-        String vers=request.getParameter("numeroVersion");
-        String dire=request.getParameter("archivo");
-        String pre=request.getParameter("precio");
-        double pr=Double.parseDouble(pre);
-        String des=request.getParameter("descripcion");
-        String tama=request.getParameter("tamaño");
-        guardar gu=new guardar();
-        buscar bu=new buscar();
-        juego ju=new juego();
-        ju.setjuego(nomb, pr, des, user, dire);
-        gu.guardarJuego(ju);
-        int a=bu.numeroJuego(nomb);
-        user="yo";
-        for(int i=0;i<opcion.length;i++){
-            String var=new String(opcion[i].getBytes(),"UTF-8");//soluciona tildes y ñ.
-            int cat=bu.idCategoria(var);
-           
-            gu.juegoXcategoria(a, cat);
-        }
-        int orden=1;
-        String esta="Pendiente";
-        String rech="";
-        version ve=new version(a,vers ,orden, esta, rech, tama, dire);
-       gu.guardarVersion(ve);
-       response.sendRedirect("cargarImagenJuego.jsp?juego="+nomb);
-      
     }
 
     /**

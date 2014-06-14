@@ -21,9 +21,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-           <%  buscar bu=new buscar();   
+           <% 
+               HttpSession sesion=request.getSession(true);
+        String user=(String)sesion.getAttribute("usuario"); 
+               int orden=1;
+               String estado="Pendiente";
+               buscar bu=new buscar();   
                guardar gu=new guardar();
-                String nomb="";
+               juego juego=new juego();
+               String rec="";
+               juego.setDesarrollador(user);
+               version version=new version();
+               version.setEstado(estado);
+               version.setOrdenalta(orden);
+               version.setRechazo(rec);
+                String nomb="",numver="",tama="",pre="",arch="",desc="",opc="";
                 int a=0;
                 if (ServletFileUpload.isMultipartContent(request)) {
                     ServletFileUpload servletFileUpload = new ServletFileUpload(new DiskFileItemFactory());
@@ -33,11 +45,54 @@
                     Iterator it = fileItemsList.iterator();
                     while (it.hasNext()) {
                         FileItem fileItemTemp = (FileItem) it.next();
-                        if (fileItemTemp.isFormField()) {
-           
-                            if(fileItemTemp.getFieldName().equals("nombre")){
+                        if (fileItemTemp.isFormField()) {                  
+                            if(fileItemTemp.getFieldName().equals("nombreJuego")){
                             nomb=fileItemTemp.getString();
-                            a=Integer.parseInt(nomb);
+                            juego.setNombre(nomb);
+                            }else
+                             if(fileItemTemp.getFieldName().equals("numeroVersion")){
+                            numver=fileItemTemp.getString();
+                            version.setId_version(numver);
+                            }else
+                                 if(fileItemTemp.getFieldName().equals("tamaño")){
+                            tama=fileItemTemp.getString();
+                            version.setTamaño(tama);
+                            }else
+                             if(fileItemTemp.getFieldName().equals("archivo")){
+                           arch=fileItemTemp.getString();
+                           juego.setImagen(arch);
+                           version.setDescarga(arch);
+                            }else
+                                 if(fileItemTemp.getFieldName().equals("precio")){
+                           pre=fileItemTemp.getString();
+                           double precio=Double.parseDouble(pre);
+                           juego.setPrecio(precio);
+                            }else
+                             if(fileItemTemp.getFieldName().equals("descripcion")){
+                            desc=fileItemTemp.getString();
+                            juego.setDescripcion(desc);
+                           if(bu.existeJuego(nomb)==false){
+                           gu.guardarJuego(juego);
+                           a=bu.numeroJuego(nomb);
+                       
+                           version.setId_juego(a);
+                           
+                           }
+                             
+                             }
+                             
+                             else
+                                 if(fileItemTemp.getFieldName().equals("michek[]")){
+                            opc=fileItemTemp.getString();
+                            String opcion=new String(opc.getBytes(),"UTF-8");
+                                    
+                            StringTokenizer tokens = new StringTokenizer(opcion,",");
+                             while(tokens.hasMoreTokens()){
+        
+        String var=tokens.nextToken();
+        int cat=bu.idCategoria(var);
+       gu.juegoXcategoria(a, cat);
+        }
                             }
 
                     } 
@@ -47,8 +102,9 @@
                     juego ju=new juego();
                     ju=bu.traerJuegoxNumero(a);
                     String fileName = fileItem.getName();
-                    
+                    juego.setImagen(fileName);
                     gu.agregarImagenJuego(ju.getNombre(), fileName);
+                    gu.guardarVersion(version);
                      String nombreArchivo = fileName;
                         StringTokenizer token = new StringTokenizer(nombreArchivo);
                         nombreArchivo = "";

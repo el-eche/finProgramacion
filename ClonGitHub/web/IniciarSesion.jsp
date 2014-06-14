@@ -168,6 +168,10 @@ function cambiarDisplay() {
                             <div id="inicio"><a href="indexDes.jsp" style="color: #FFFFFF;">
                 <img id="mifoto" src="http://localhost/Imagenes/home.png" class="otromin">
                 <font style="position: absolute; top:15px;left: 30px;">Inicio</a></div>
+   <div id="reloj" class="reloj" style="position: absolute;left: 750px;top: 100px;">
+              <embed src="http://www.clocklink.com/clocks/5005-white.swf?TimeZone=UYT&"  width="140" height="50" wmode="transparent" type="application/x-shockwave-flash">
+          </div>
+    
     </div>
                             
                             
@@ -181,11 +185,11 @@ function cambiarDisplay() {
             <tr><td><div id="resp"><%=error%></div></td></tr> 
        <%} %> 
     <tr>
-        <td><input type="text" name="nick" id="nick" placeholder="Usuario :"></td></tr> 
+        <td><input type="text" name="nick" id="nick" placeholder="Usuario :" class="texto"></td></tr> 
        <tr>
-     <td> <input type="password" name="contra" id="contra" placeholder="Contraseña :"></td></tr>
+     <td> <input type="password" name="contra" id="contra" placeholder="Contraseña :" class="texto"></td></tr>
     <tr>
-        <td> <button id="boton" type="submit" onclick=""><img src="http://localhost/Imagenes/Login.jpg" width="30" height="20">
+        <td> <button id="boton" type="submit" onclick="" class="texto"><img src="http://localhost/Imagenes/Login.jpg" width="30" height="20">
                 Iniciar Sesion</button></td></tr>       
             
             </table>
@@ -196,25 +200,25 @@ function cambiarDisplay() {
             <table name="registrarse" border="5">   
                 <tr><h3>Registrarse </h3></tr>
             <tr><td>      
-          Ingrese Nick :   <input type="text" name="usuario" id="usuario" placeholder="Nick :" required="required">
+          Ingrese Nick :   <input type="text" name="usuario" id="usuario" placeholder="Nick :" required="required" class="texto">
           <div id="Info" style="float: right"></div>
 </td></tr>
-            <tr><td>Ingrese Contraseña : <input type="password" name="pass" id="pass" placeholder="Contraseña :" onblur="repasar();" required="required">
+            <tr><td>Ingrese Contraseña : <input type="password" name="pass" id="pass" placeholder="Contraseña :" onblur="repasar();" required="required" class="texto">
                 <div id="masInfo" style="float: right"></div></td></tr>
-            <tr><td>Repita la Contraseña anterior : <input type="password" name="otrapass" id="otrapass" placeholder="Repetir Contraseña :" onblur="comprobar();" required="required">
+            <tr><td>Repita la Contraseña anterior : <input type="password" name="otrapass" id="otrapass" placeholder="Repetir Contraseña :" onblur="comprobar();" required="required" class="texto">
                 <div id="otraInfo" style="float: right"></div></td></tr>
             <tr><td>Seleccione una opción : <select name="menu" id="menu"  onchange="cambiarDisplay();">
   <option selected="selected" value="Cliente">Cliente</option>
   <option value="Desarrollador">Desarrollador</option>
 </select></td></tr>
  
-            <tr><td>Ingrese Email : <input type="text" name="email" placeholder="Correo Electronico :" required="required"></td></tr>
-  <tr><td>Ingrese Nombre : <input type="text" name="nombre" placeholder="Nombre :" required="required"></td></tr>
-  <tr><td>Ingrese Apellido : <input type="text" name="apellido" placeholder="Apellido :" required="required"></td></tr>
-  <tr><td>Ingrese Fecha Nacimiento : <input type="date" name="nacimiento" required="required"></td></tr>
-  <tr id="linke"><td>Ingrese Link de su Web : <input type="text" name="link"></td></tr>
+            <tr><td>Ingrese Email : <input type="text" name="email" placeholder="Correo Electronico :" required="required" class="texto"></td></tr>
+  <tr><td>Ingrese Nombre : <input type="text" name="nombre" placeholder="Nombre :" required="required" class="texto"></td></tr>
+  <tr><td>Ingrese Apellido : <input type="text" name="apellido" placeholder="Apellido :" required="required" class="texto"></td></tr>
+  <tr><td>Ingrese Fecha Nacimiento : <input type="date" name="nacimiento" required="required" class="texto"></td></tr>
+  <tr id="linke"><td>Ingrese Link de su Web : <input type="text" name="link" class="texto"></td></tr>
   <tr><td>Seleccione Imagen : <input name="myFile" type="file" id="myFile" required="required"/><img id="imgSalida" width="50" height="50" src="" /></td></tr>
-  <tr><td><input type="submit"></td></tr>
+  <tr><td><input type="submit" class="texto" value="Registrar Nuevo"></td></tr>
             </table></form>
         </div></center> 
         <div id="mio"></div>

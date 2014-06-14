@@ -58,7 +58,10 @@
      <div id="inicio" style="top: 110px;left: 120px;"><a href="indexDes.jsp" style="color: #FFFFFF;">
                 <img id="mifoto" src="http://localhost/Imagenes/home.png" class="otromin">
                 <font style="position: absolute; top:15px;left: 30px;">Inicio</a></div>
-    </div>
+          <div id="reloj" class="reloj" style="position: absolute;left: 750px;top: 100px;">
+              <embed src="http://www.clocklink.com/clocks/5005-white.swf?TimeZone=UYT&"  width="140" height="50" wmode="transparent" type="application/x-shockwave-flash">
+          </div>
+   </div>
        
         <div id="medio">
             <div id="categoria" style="top: 5px;">
